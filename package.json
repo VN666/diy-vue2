@@ -1,0 +1,21 @@
+{
+  "name": "diy-vue2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rollup -c -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.28.6",
+    "@babel/preset-env": "^7.28.6",
+    "@rollup/plugin-babel": "^6.1.0",
+    "ip": "^2.0.1",
+    "rollup": "^4.55.1",
+    "rollup-plugin-dev": "^2.1.0",
+    "rollup-plugin-livereload": "^2.0.5"
+  }
+}
