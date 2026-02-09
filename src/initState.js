@@ -1,8 +1,24 @@
+import { observe } from "./observer/index.js";
+
 export function initState (vm) {
-  if (vm.$options.data) initData(vm);
+  let opts = vm.$options;
+  if (opts.data) initData(vm);
+  if (opts.props) initProps(vm);
+  if (opts.watch) initWatch(vm);
+  if (opts.methods) initMethods(vm);
+  if (opts.computed) initComputed(vm);
 }
 
 function initData (vm) {
   let data = vm.$options.data;
-  data = typeof data === "function" ? data.call(vm) : data;
-} 
+  data = vm._data = typeof data === "function" ? data.call(vm) : data;
+  observe(data);
+}
+
+function initProps (vm) {}
+
+function initWatch (vm) {}
+
+function initMethods (vm) {}
+
+function initComputed (vm) {}

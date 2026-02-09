@@ -22,6 +22,6 @@ export default {
       spa: true,
       host: ip.address()
     }),
-    livereload("dist")
+    livereload({ watch: ["dist", "index.html"] })
   ]
 };
