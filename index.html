@@ -14,7 +14,9 @@
       data () {
         return {
           msg: "hello",
-          a: { b: 20 }
+          a: { b: 20 },
+          list: [1, 2, 3],
+          arr: [{a: 1}]
         };
       },
       computed: {},
@@ -22,8 +24,6 @@
       methods: {},
       watch: {}
     });
-    vm._data.a = {c: 30}
-    console.log(vm._data.a)
   </script>
 </body>
 </html>

@@ -1,11 +1,23 @@
+import { ArrayMethods } from "./arr.js";
+
 export function observe (data) {
-  if (typeof data !== "object" || data == null) return;
+  if (typeof data !== "object" || data == null) return; 
+  
   return new Observer(data);
 }
 
 class Observer {
   constructor (value) {
-    this.walk(value);
+    Object.defineProperty(value, "__ob__", {
+      enumerable: false,
+      value: this
+    });
+
+    if (Array.isArray(value)) {
+      value.__proto__= ArrayMethods;
+      this.observeArray(value);
+    }
+    else this.walk(value);
   }
 
   walk (data) {
@@ -14,6 +26,12 @@ class Observer {
       let key = keys[i];
       let value = data[key];
       defineReactive(data, key, value);
+    }
+  }
+
+  observeArray (value) {
+    for (let i = 0; i < value.length; i++) {
+      observe(value[i]);
     }
   }
 }
